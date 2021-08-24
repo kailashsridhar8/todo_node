@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+
+
+<script>
+    var getTask = function(id){
+        var text1 =document.getElementById(id).children.item(0).innerText;
+        $.ajax({
+            type:'DELETE',
+            url:'/cart/'+ text1,
+            success: function(data){
+                location.reload();
+            }
+        });
+}
+</script>
+<link rel="stylesheet" href="/assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Poppins:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+           
+            <a href="/backlog"> <h3>To Do Application</h3></a>
+        </div>
+        <ul class="nav-links">
+                
+            <li><a href="/backlog" >Tasks</a></li>
+          
+           <li> <a href="/cart"><i class="fa fa-bell" style="font-size:30px;color:#0088a9"></i></a></li>
+           
+          
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+ 
+   
+<div class="container">
+
+    <div id="todoc-table">
+        <form method="POST">
+           
+          <button class="cartbutton" type="submit" >IMPORTANTS</button>
+       
+        </form>
+        <hr>
+        <ul id="ulo">
+            <% for(var i=0;i<cartlist.length ; i++){%>
+               
+          
+                 
+                   <div  id='<%=i%>'>
+                    <!-- <a href="#" class="" style="width: 50%;" > -->
+                        <li class="listitem  btn btn-warning" style="width: 50%;"><%= cartlist[i].tasks_name %></li> 
+                    <!-- <a href="#" class="btn btn-danger" style="width: 20%;" > -->
+                         <li class="remove btn btn-danger" style="width: 40%;" onclick="getTask('<%=i%>')">Completed</li>   
+                         <!-- <a href="#" class=" > -->
+                      
+                        </div>
+
+                   
+                   
+
+
+               
+            <%}%>
+         
+
+
+          
+
+
+         </ul>
+      
+      
+    </div>
+   
+
+
+</div>
+   
+    <script src="/assets/style.js"></script>
+      
+    
+</body>
+</html>
